@@ -41,25 +41,25 @@
 
 ---
 
-### 四、 Step 3：填空式「一桿進洞」許願 Prompt（直接修改括號內容）
+### 四、 Step 3：填空式「一桿進洞」許願 Prompt（CEFR B1 / B2 單字練習專用）
 
-把你想做的作品一次講清楚，最省免費版額度！請複製以下其中一個範本貼給 AntiGravity：
+把你想做的單字練習遊戲一次講清楚，最省免費版額度！請複製以下其中一個範本，修改 `【...】` 括號內的選項後貼給 AntiGravity：
 
-#### 🎮 範本 A：做「互動學習小遊戲＋雲端排行榜」
+#### 🎮 範本 A：做「B1 / B2 單字闖關小遊戲＋雲端排行榜」
 ```text
-/clasp-netlify-sheets 請幫我做一個練習【填入主題，例如：國中英文單字 / 化學元素週期表 / 台灣歷史年代】的【填入遊戲類型，例如：迷宮追逐遊戲 / 打地鼠遊戲 / 太空射擊問答 / 翻牌記憶遊戲】。
+/clasp-netlify-sheets 請幫我做一個練習 CEFR 【選填：B1 或 B2】 英語單字的【選一種遊戲類型：迷宮追逐遊戲 / 打地鼠遊戲 / 太空射擊問答 / 翻牌配對遊戲 / 炸彈拆解拼字遊戲】。
 需求：
-1. 畫面要有計分、生命值與關卡顯示，支援鍵盤與手機觸控按鈕操作。
-2. 用 Google Sheets 當資料庫，包含「單字題庫」分頁（預先幫我塞 10 題）與「排行榜」分頁（只記錄班級代號、座號、總分、闖關數，不收真實姓名）。
+1. 題目玩法為【選一種：看中文解釋找英文單字 / 看英文例句克漏字選正確單字 / 看英文定義找同義字】，畫面要有計分、生命值與關卡顯示，支援鍵盤與觸控按鈕。
+2. 用 Google Sheets 當資料庫，包含「單字題庫」分頁（預先幫我塞 12 個 CEFR B1/B2 常用學術與職場單字、解釋與例句）與「排行榜」分頁（只記錄班級代號、座號、總分、答對題數，不收真實姓名）。
 3. 請自動幫我推上 Google Apps Script 並部署到 Netlify！
 ```
 
-#### 📋 範本 B：做「班級實用網頁工具＋即時統計」
+#### 📚 範本 B：做「B1 / B2 智慧單字卡與自我測驗系統＋學習紀錄榜」
 ```text
-/clasp-netlify-sheets 請幫我做一個【填入工具名稱，例如：課堂即時簽到與心情牆 / 專題分組投票系統 / 讀書進度打卡板】網頁。
+/clasp-netlify-sheets 請幫我做一個 CEFR 【選填：B1 或 B2】 英語單字的「互動單字卡 (Flashcards) ＋ 限時四選一測驗」網頁系統。
 需求：
-1. 使用者只需填寫「班級代號、座號」與表單內容即可送出（不收真實姓名）。
-2. 資料即時寫入 Google Sheets，並在網頁上同步顯示最新紀錄列表。
+1. 包含「學習模式（可翻面看單字、詞性、中英解釋與例句）」與「挑戰測驗模式（限時作答計分）」。
+2. 用 Google Sheets 當資料庫，包含「單字題庫」分頁（預先建立 12 個 B1/B2 單字，且可從網頁新增單字進試算表）與「測驗紀錄」分頁（記錄班級代號、座號、測驗分數与完成時間，不收真實姓名）。
 3. 請自動幫我推上 Google Apps Script 並部署到 Netlify！
 ```
 
@@ -120,25 +120,25 @@ Please download the skill file from https://raw.githubusercontent.com/MeiChen-ai
 
 ---
 
-### 4. Step 3: Fill-in-the-Blank Wish Prompts (One-Shot Prompts)
+### 4. Step 3: Fill-in-the-Blank Wish Prompts (CEFR B1 / B2 Vocabulary Practice)
 
-Giving clear requirements in your very first message saves 70%+ of your free quota! Copy one of the templates below, fill in the brackets `[...]`, and send it to AntiGravity:
+Giving clear requirements in your very first message saves 70%+ of your free quota! Copy one of the templates below, customize the brackets `[...]`, and send it to AntiGravity:
 
-#### 🎮 Template A: Interactive Learning Game + Cloud Leaderboard
+#### 🎮 Template A: CEFR B1 / B2 Vocabulary Arcade Game + Cloud Leaderboard
 ```text
-/clasp-netlify-sheets-en Please build a [Game Type, e.g., Maze Chase Game / Whack-a-Mole / Space Quiz Shooter / Memory Card Game] to practice [Topic, e.g., B2 English Vocabulary / World Capitals / Mental Math].
+/clasp-netlify-sheets-en Please build a [Choose Game Type: Maze Chase Game / Whack-a-Mole / Space Quiz Shooter / Memory Card Matching / Word Bomb Defuser] web game for practicing CEFR [Choose: B1 or B2] English vocabulary.
 Requirements:
-1. Include a live Score, Lives (Hearts), and Stage display, supporting both keyboard and on-screen touch buttons.
-2. Use Google Sheets as the database with two tabs: a "VocabBank" tab (pre-filled with 10 sample items) and a "Leaderboard" tab (recording only ClassCode, SeatNo, Score, and Stage—no real names).
+1. Gameplay mode: [Choose: match the English definition to the target word / fill in the blank in a context sentence / match synonyms], with live Score, Lives, and Stage display (supporting both keyboard and touch buttons).
+2. Use Google Sheets as the database with two tabs: a "VocabBank" tab (pre-filled with 12 CEFR B1/B2 words, English definitions, and example sentences—all in pure English) and a "Leaderboard" tab (recording only ClassCode, SeatNo, Score, and CorrectCount—no real names).
 3. Please push the backend to Google Apps Script and deploy the frontend to Netlify automatically!
 ```
 
-#### 📋 Template B: Classroom Web Tool + Live Dashboard
+#### 📚 Template B: CEFR B1 / B2 Smart Flashcards & Speed Quiz + Cloud Scoreboard
 ```text
-/clasp-netlify-sheets-en Please build a [Tool Name, e.g., Live Class Check-In & Mood Board / Project Voting App / Study Tracker] web application.
+/clasp-netlify-sheets-en Please build an interactive "CEFR [Choose: B1 or B2] Vocabulary Flashcards & Timed Speed Quiz" web application.
 Requirements:
-1. Users submit their ClassCode, SeatNo, and form input (do not collect real names).
-2. Save submissions directly to Google Sheets and display the latest records live on the page.
+1. Include a "Study Mode" (flip cards showing the word, part of speech, English definition, and example sentence) and a "Timed Quiz Challenge Mode" (multiple-choice cloze questions with score calculation).
+2. Use Google Sheets as the database with two tabs: a "VocabBank" tab (pre-filled with 12 B1/B2 words, plus a form on the web page to add new words to Google Sheets) and a "Leaderboard" tab (recording only ClassCode, SeatNo, Score, and Timestamp—no real names).
 3. Please push the backend to Google Apps Script and deploy the frontend to Netlify automatically!
 ```
 
