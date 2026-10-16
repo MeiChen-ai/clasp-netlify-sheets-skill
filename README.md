@@ -35,8 +35,13 @@
 2. **【關鍵點擊 1】打開 Google Apps Script API 開關**：
    * 點開 👉 **[https://script.google.com/home/usersettings](https://script.google.com/home/usersettings)**
    * 確認右上角是你的**個人 Gmail**，把 **「Google Apps Script API」切換為「開啟 (ON)」**（開完約需 1～2 分鐘生效）。
-3. **準備 Netlify 權杖（若尚未綁定 Netlify MCP）**：
-   * 登入 [https://app.netlify.com/](https://app.netlify.com/) ➔ 點右上角頭像 **User settings** ➔ **Applications** ➔ **Personal access tokens** ➔ 點 **New access token** 產生一組 `nfp_...` 開頭的代碼，交給 AntiGravity 幫你綁定。
+3. **綁定 Netlify 權杖（只需設定一次，若已綁定可跳過）**：
+   * 登入 [https://app.netlify.com/](https://app.netlify.com/) ➔ 點右上角頭像 **User settings** ➔ **Applications** ➔ **Personal access tokens** ➔ 點 **New access token** 產生一組 `nfp_...` 開頭的代碼。
+   * **不用自己改設定檔！** 直接把下面這句話貼進 AntiGravity 對話框，AI 就會自動幫你寫進設定檔：
+     ```text
+     /clasp-netlify-sheets 這是我的 Netlify Token：nfp_請換成你的代碼 ，請幫我寫入 ~/.gemini/config/mcp_config.json 設定好 Netlify MCP。
+     ```
+   * ⚠️ **AI 設定完成後，請把 AntiGravity 軟體「關閉並重新打開一次」**，讓 Netlify 工具正式載入生效！
 4. **省額度秘訣**：將 AntiGravity 模型切換為 **Gemini Flash**（反應最快、免費版額度最耐用）。
 
 ---
@@ -114,8 +119,13 @@ Please download the skill file from https://raw.githubusercontent.com/MeiChen-ai
 2. **[Key Click 1] Turn ON the Google Apps Script API Switch**:
    * Open 👉 **[https://script.google.com/home/usersettings](https://script.google.com/home/usersettings)**
    * Make sure you are signed into your **personal `@gmail.com` account**, and switch **"Google Apps Script API"** to **"ON"** (wait 1–2 minutes for it to take effect).
-3. **Prepare Your Netlify Personal Access Token (if not connected yet)**:
-   * Log in at [https://app.netlify.com/](https://app.netlify.com/) ➔ Click your top-right avatar **User settings** ➔ **Applications** ➔ **Personal access tokens** ➔ Click **New access token** to generate a token (`nfp_...`) and give it to AntiGravity when asked.
+3. **Connect Your Netlify Personal Access Token (One-Time Setup)**:
+   * Log in at [https://app.netlify.com/](https://app.netlify.com/) ➔ Click your top-right avatar **User settings** ➔ **Applications** ➔ **Personal access tokens** ➔ Click **New access token** to generate a token (`nfp_...`).
+   * **You do NOT need to edit any config files manually!** Simply copy & paste this sentence into the AntiGravity chat box, and the AI will configure it for you automatically:
+     ```text
+     /clasp-netlify-sheets-en Here is my Netlify Token: nfp_PASTE_YOUR_TOKEN_HERE . Please save it into my ~/.gemini/config/mcp_config.json to configure the Netlify MCP server.
+     ```
+   * ⚠️ **After the AI saves the config, completely close and restart AntiGravity once** so the Netlify tools load!
 4. **Quota-Saving Tip**: Switch your AntiGravity model selector to **Gemini Flash** (fastest speed and saves your free-tier quota!).
 
 ---
