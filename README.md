@@ -11,7 +11,7 @@
 透過 **`/clasp-netlify-sheets`** 技能，你**完全不需要自己寫後端程式碼，也不需要手動去開 Google Sheets 建表格**：
 * **前端畫面（互動練習網頁）**：自動發佈到 **Netlify**，產生一個全世界都能打開的公開網址。
 * **後端資料庫（雙分頁 Google 試算表）**：由 AI 自動在你的 Google 雲端硬碟建立 **Google Sheets**、自動生出兩個分頁（題庫表＋作答紀錄表），並自動把你的 5 題教材填進去！
-* **你的任務**：把寫程式與建試算表全部交給 AntiGravity AI，你只需要完成 **「1 句安裝指令 ＋ 從 Cockpit 複製貼上 Prompt（不需 `AGENTS.md`）＋ 3 次瀏覽器點擊授權」**！
+* **你的任務**：把寫程式與建試算表全部交給 AntiGravity AI，你只需要完成 **「1 句安裝指令 ＋ 從 Cockpit 複製貼上 Prompt ＋ 3 次瀏覽器點擊授權」**！
 
 ---
 
@@ -46,7 +46,7 @@
 
 ---
 
-### 四、 Step 3：第 8 週與第 9 週專用「一桿進洞」Prompt 範本（直接貼給 AntiGravity，不需 `AGENTS.md`）
+### 四、 Step 3：第 8 週與第 9 週專用「一桿進洞」Prompt 範本（直接貼給 AntiGravity）
 
 在課堂上，你可以直接在課程 **Teaching Cockpit 的 Design Card（設計卡）** 填好 5 格後按 **【📋 Copy Prompt for Antigravity】**，或是直接複製以下第 8 週／第 9 週範本修改 `【...】` 後貼給 AntiGravity：
 
@@ -120,7 +120,7 @@
 With the **`/clasp-netlify-sheets-en`** skill in **AntiGravity**, you can build and deploy a cloud-connected language learning web app **without writing backend code and without manually creating Google Sheets**:
 * **Frontend (Interactive Web App)**: Automatically hosted on **Netlify** with a live public URL.
 * **Backend Database (Auto-Created Two-Tab Google Sheet)**: The AI automatically creates a **Google Sheet** in your Google Drive, sets up both tabs (**Question Bank + Learner Logs**), and pre-fills your 5 items!
-* **Your Job**: Let the AntiGravity AI write all the code and build the spreadsheet—you only need **1 install prompt + 1 prompt copied from your Cockpit Design Card (no `AGENTS.md` needed) + 3 simple browser clicks**!
+* **Your Job**: Let the AntiGravity AI write all the code and build the spreadsheet—you only need **1 install prompt + 1 prompt copied from your Cockpit Design Card + 3 simple browser clicks**!
 
 ---
 
@@ -155,7 +155,7 @@ Please download the skill file from https://raw.githubusercontent.com/MeiChen-ai
 
 ---
 
-### 4. Step 3: Week 8 & Week 9 Ready-to-Use Prompts (Paste Directly into AntiGravity—No `AGENTS.md` Needed)
+### 4. Step 3: Week 8 & Week 9 Ready-to-Use Prompts (Paste Directly into AntiGravity)
 
 Fill out your 5-field **Design Card** in the course Teaching Cockpit and click **【📋 Copy Prompt for Antigravity】**, or copy and customize one of the templates below:
 
