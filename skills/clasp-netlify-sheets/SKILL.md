@@ -127,6 +127,8 @@ my-project/
 ### 3A. 【第 8 週範本】B1/B2 單字兩段式提示練習網（`gas_code.js` 自動建雙分頁＋預塞 5 題）
 自動建立 Google Sheets 並生出兩個分頁：`Vocab_Bank`（預塞學生的 5 個 B1/B2 單字、挖空例句、Hint 1 搭配詞提示、Hint 2 英英定義與字首、完整例句）與 `Learner_Logs`（記錄同儕測試者暱稱、首次答對題數、按提示次數、自造句）：
 
+> ⚠️ **學生 Prompt 優先**：若學生 Prompt（Cockpit 設計卡或 README 範本）列出的欄位比本範本少（例如只有 `Word`, `Cloze_Sentence`, `Hint1`, `Hint2`），以學生 Prompt 為準；干擾選項由 Agent 依同詞性自動產生。
+
 ```javascript
 function getOrCreateSpreadsheet() {
   let ss = SpreadsheetApp.getActiveSpreadsheet();

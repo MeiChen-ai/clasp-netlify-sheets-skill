@@ -112,6 +112,8 @@ my-project/
 ### 3A. [Week 8 Template] B1/B2 Vocabulary Two-Step Hint App (`gas_code.js` Auto-Creates `Vocab_Bank` & `Learner_Logs`)
 Automatically creates a Google Sheet with Tab 1 `Vocab_Bank` (pre-seeded with the student's 5 B1/B2 target words, cloze sentences, Hint 1 collocation clues, Hint 2 definitions, and full examples) and Tab 2 `Learner_Logs` (recording peer testers' nickname, first-try score, hints used, and pushed-output sentence):
 
+> ⚠️ **The student's prompt wins**: if the student's prompt (Cockpit design card or README template) lists fewer columns than this template (e.g. only `Word`, `Cloze_Sentence`, `Hint1`, `Hint2`), follow the prompt; the agent generates the distractors from words of the same part of speech.
+
 ```javascript
 function getOrCreateSpreadsheet() {
   let ss = SpreadsheetApp.getActiveSpreadsheet();

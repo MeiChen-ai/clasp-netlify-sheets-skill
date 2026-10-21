@@ -52,26 +52,27 @@
 
 #### 📘 第 8 週範本：做「B1 / B2 單字兩段式提示練習網＋Google Sheets 自動建表」
 ```text
-/clasp-netlify-sheets 請幫我建立並部署一個「CEFR B1/B2 單字兩段式提示微學習網頁 (B1/B2 Vocabulary Microlearning Web App)」，連接 Google Sheets 與 Netlify！
+/clasp-netlify-sheets 請幫我建立並部署一個 B1/B2 單字微學習網頁 App（B1/B2 Vocabulary Microlearning Web App），連接 Google Sheets 與 Netlify。
 
-1. 網頁互動設計（一次顯示 1 題，共 5 題）：
-- 主題與程度：【例如：B2 Academic Reporting Verbs (5 words)】
-- 開始畫面請測試者輸入「英文暱稱 (Tester Nickname)」（不收真實姓名）。
-- 每題顯示一句挖空例句（___）與 4 個選項，搭配兩段式提示回饋（Feedback Loop）：
-  * 第 1 次答錯 ➔ 不公布答案，顯示【Hint 1：搭配詞線索 (Collocation Clue / Elicitation)】。
-  * 第 2 次答錯 ➔ 顯示【Hint 2：英英定義＋字首提示 (Definition + First Letter)】。
-  * 答對後 ➔ 顯示完整例句（Recast）＋「🔊 Listen」發音按鈕（使用瀏覽器 window.speechSynthesis）。
-- 結尾產出任務（Pushed Output）：5 題答完後，請學習者挑 1 個剛剛按過提示的單字造出一個完整句子，按下 Submit 送出。
+1. 網頁功能（What the Web App Does）：
+- 標題與程度：【例如：B2 Words for team projects】（5 個單字）
+- 開始畫面請測試者輸入暱稱（Tester Nickname，不用真名）。
+- 一次顯示 1 題單字克漏字（共 5 題），4 個選項（目標字＋3 個同詞性的字）。
+- 回饋（Feedback Loop）：
+  * 第 1 次答錯 ➔ 顯示 Hint 1（搭配詞線索），不公布答案。
+  * 第 2 次答錯 ➔ 顯示 Hint 2（英英定義＋字首）。
+  * 答對 ➔ 顯示完整例句＋「🔊 Listen」按鈕（瀏覽器 speechSynthesis）。
+- 結尾任務（Final Step）：【例如：挑 1 個剛剛需要提示的單字，自己寫一個完整句子】然後按 Submit 送出。
 
 2. 自動建立 Google Sheets 雙分頁（請在 gas_code.js 的 setupSheet 自動建表，不要叫我手動建試算表）：
-- 分頁 1 `Vocab_Bank`：自動預先填入我下方的 5 個單字題目（Word, Level, Cloze_Sentence, Distractors_CSV, Hint1_Collocation, Hint2_Definition, Full_Example）。
-- 分頁 2 `Learner_Logs`：當同儕測試者按 Submit 時，自動記錄 `[Timestamp, Tester_Nickname, First_Try_Score, Hints_Used_Count, Hardest_Words, Learner_Sentence]`。
+- 分頁 1 `Vocab_Bank`：預先填入下方 5 個單字（`Word`, `Cloze_Sentence`, `Hint1`, `Hint2`）。
+- 分頁 2 `Learner_Logs`：測試者按 Submit 時，記錄 `[Timestamp, Nickname, First_Try_Score, Hints_Used_Count, Learner_Sentence]`。
 
-3. 我的 5 個單字與兩段式提示：
-- 單字 1：【例如：tentative | The team made a ___ plan because the budget was not final yet. | 選項：tentative, permanent, reluctant, decisive | Hint 1: Often used before 'plan', 'agreement', or 'conclusion' | Hint 2: Not certain or fixed; temporary (starts with 'ten...')】
-- 單字 2～5：【依序填入另外 4 個單字，或請 AI 依主題幫我補齊另外 4 個同主題 B1/B2 單字】
+3. 我的 5 個單字（My 5 Vocabulary Items）：
+- Item 1: Word: 【tentative】 | Cloze_Sentence: 【The team made a ___ plan because the budget was not final yet.】 | Hint1: 【Often used before 'plan', 'agreement' or 'conclusion'; it means not 100% decided.】 | Hint2: 【Not certain or fixed; may change later. Starts with 'ten...'.】
+- Item 2～5：【依同樣格式再寫 4 個單字】
 
-4. 請依 clasp-netlify-sheets 流程建立 .claspignore、引導我點 3 次授權、注入真實 /exec 網址並部署到 Netlify！
+4. 請依 clasp-netlify-sheets 流程建立 .claspignore、用中文引導我完成 3 次授權點擊、注入真實 /exec 網址並部署到 Netlify！
 ```
 
 #### 🎯 第 9 週範本：設計你自己的英文學習 App（Design Your Own English App）
@@ -175,26 +176,29 @@ Fill out your 5-field **Design Card** in the course Teaching Cockpit and click *
 
 #### 📘 Week 8 Template: CEFR B1 / B2 Vocabulary Two-Step Hint Web App + Auto-Created Google Sheet
 ```text
-/clasp-netlify-sheets-en Please build and deploy a "CEFR B1/B2 Vocabulary Microlearning Web App" connected to Google Sheets and Netlify!
+/clasp-netlify-sheets-en Please build and deploy a B1/B2 Vocabulary Microlearning Web App connected to Google Sheets and Netlify.
 
-1. Interactive Web App Flow (1 question card at a time, 5 questions total):
-- Topic & Level: [e.g., B2 Academic Reporting Verbs (5 words)]
-- Ask for Tester Nickname on the start screen (no real names for privacy).
-- For each word, show a context sentence with a blank (___) and 4 choices, using a Two-Step Feedback Loop:
-  * 1st wrong try -> Do NOT reveal the answer. Unlock and show Hint 1 (Collocation / Elicitation clue).
-  * 2nd wrong try -> Unlock and show Hint 2 (English definition + first-letter clue).
-  * Correct -> Show the full sentence (Recast) + a "🔊 Listen" button (browser window.speechSynthesis).
-- Final Pushed Output Task: After all 5 words, ask the learner to pick 1 word they needed a hint for and write one complete original sentence before clicking Submit.
+1. What the Web App Does:
+- Title & Level: [e.g., B2 Words for team projects] (5 words)
+- Ask for Tester Nickname on the start screen (no real names).
+- Show 1 vocabulary cloze question at a time (5 questions total) with 4 choices (the target word + 3 words of the same part of speech).
+- Feedback Loop:
+  * 1st wrong try -> Show Hint 1 (Collocation clue). Do NOT reveal the answer.
+  * 2nd wrong try -> Show Hint 2 (Definition + first letter).
+  * Correct -> Show full sentence + a "🔊 Listen" button (browser speechSynthesis).
+- Final Step: [e.g., Pick 1 word you needed a hint for and write one complete sentence of your own.] Then the learner clicks Submit.
 
-2. Auto-Create Two-Tab Google Sheet (Create automatically via setupSheet in gas_code.js—do NOT ask me to create the spreadsheet manually):
-- Tab 1 `Vocab_Bank`: Pre-fill my 5 vocabulary items below (Word, Level, Cloze_Sentence, Distractors_CSV, Hint1_Collocation, Hint2_Definition, Full_Example).
-- Tab 2 `Learner_Logs`: When a peer tester clicks Submit, log `[Timestamp, Tester_Nickname, First_Try_Score, Hints_Used_Count, Hardest_Words, Learner_Sentence]`.
+2. Auto-Create Google Sheets (Do NOT ask me to create the sheet manually):
+- Automatically create a Google Sheet with 2 tabs via `gas_code.js`:
+  * Tab 1 `Vocab_Bank`: Pre-fill my 5 vocabulary items below (`Word`, `Cloze_Sentence`, `Hint1`, `Hint2`).
+  * Tab 2 `Learner_Logs`: When a tester clicks Submit, log `[Timestamp, Nickname, First_Try_Score, Hints_Used_Count, Learner_Sentence]`.
 
 3. My 5 Vocabulary Items:
-- Word 1: [e.g., tentative | The team made a ___ plan because the budget was not final yet. | Choices: tentative, permanent, reluctant, decisive | Hint 1: Often used before 'plan', 'agreement', or 'conclusion' | Hint 2: Not certain or fixed; temporary (starts with 'ten...')]
-- Words 2–5: [Enter your other 4 words, or ask the AI to generate 4 matching B1/B2 words for this topic]
+Item 1: Word: [tentative] | Cloze_Sentence: [The team made a ___ plan because the budget was not final yet.] | Hint1: [Often used before 'plan', 'agreement' or 'conclusion'; it means not 100% decided.] | Hint2: [Not certain or fixed; may change later. Starts with 'ten...'.]
+Items 2-5: [4 more words in the same format]
 
-4. Please follow the clasp-netlify-sheets-en SOP: create .claspignore, guide me through the authorization clicks, inject the real /exec URL, and deploy to Netlify!
+4. Deployment:
+- Follow the `clasp-netlify-sheets-en` skill SOP (create `.claspignore`, guide me in English through the 3 authorization clicks, inject real `/exec` URL, and deploy to Netlify).
 ```
 
 #### 🎯 Week 9 Template: Design Your Own English App
