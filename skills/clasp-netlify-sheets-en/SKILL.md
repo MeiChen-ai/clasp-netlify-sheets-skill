@@ -1,6 +1,6 @@
 ---
 name: clasp-netlify-sheets-en
-description: AntiGravity Edition: Automated Clasp + Google Sheets Two-Tab Auto-Creation + Netlify MCP zero-copy closed-loop web system guide (including built-in templates for Week 8 B1/B2 Vocabulary Two-Step Hint App and Week 9 My Own English Personal Weakness Tracker, with student-friendly 3-click guidance and pitfall prevention SOP). Activate automatically when the user says "install Netlify", "connect Netlify", "setup Netlify", "connect Google Sheets", "use Google Sheets as database", "connect Apps Script", "clasp login", "build a web form saved to Google Sheets", "frontend + Google Sheets + Netlify", or "Clasp deployment".
+description: AntiGravity Edition: Automated Clasp + Google Sheets Two-Tab Auto-Creation + Netlify MCP zero-copy closed-loop web system guide (including built-in templates for Week 8 B1/B2 Vocabulary Two-Step Hint App and Week 9 Design Your Own English App (student-designed app, generic two-tab template), with student-friendly 3-click guidance and pitfall prevention SOP). Activate automatically when the user says "install Netlify", "connect Netlify", "setup Netlify", "connect Google Sheets", "use Google Sheets as database", "connect Apps Script", "clasp login", "build a web form saved to Google Sheets", "frontend + Google Sheets + Netlify", or "Clasp deployment".
 ---
 
 # AntiGravity × Clasp Cloud Deployment + Auto-Created Google Sheets + Netlify MCP Zero-Copy Closed-Loop System (English Edition)
@@ -17,7 +17,7 @@ Your user is an **English-major student or educator without a backend engineerin
 
 | 🙋‍♀️ The Student Only Does (Zero Manual Sheet Creation) | 🤖 The AntiGravity Agent Handles Everything Else |
 | :--- | :--- |
-| ① Turn ON the GAS API switch at `script.google.com/home/usersettings` (and provide Netlify Token once)<br>② Sign in with personal `@gmail.com` during `clasp login` and check **Select all**<br>③ Click `▷ Run` (`setupSheet`) once in the GAS Editor ➔ **Advanced** ➔ **Go to project (unsafe)** ➔ **Allow** | Creating local files & `.claspignore`, auto-creating the Google Sheet & two tabs (`Vocab_Bank` + `Learner_Logs` for Week 8, or `My_Weak_Items` + `My_Practice_Log` for Week 9), pre-seeding the student's 5 items into Tab 1, injecting the real `/exec` URL, and deploying to Netlify via Netlify MCP |
+| ① Turn ON the GAS API switch at `script.google.com/home/usersettings` (and provide Netlify Token once)<br>② Sign in with personal `@gmail.com` during `clasp login` and check **Select all**<br>③ Click `▷ Run` (`setupSheet`) once in the GAS Editor ➔ **Advanced** ➔ **Go to project (unsafe)** ➔ **Allow** | Creating local files & `.claspignore`, auto-creating the Google Sheet & two tabs (`Vocab_Bank` + `Learner_Logs` for Week 8, or `Items` + `Practice_Log` for Week 9), pre-seeding the student's 5 items into Tab 1, injecting the real `/exec` URL, and deploying to Netlify via Netlify MCP |
 
 1. **Never Ask the Student to Manually Create a Google Sheet or Type Column Headers**: All spreadsheet creation, tab naming, column headers, and initial 5 items must be embedded inside `setupSheet()` in `gas_code.js` so that everything is created automatically the moment the student clicks `▷ Run`.
 2. **Idempotent / Fast-Track for Week 9**: Always check `npx.cmd -y @google/clasp show-authorized-user --json` and `netlify-user-services-reader` first. If the student already authenticated in Week 8, **skip Phase 1 completely in Week 9** and go straight to creating the new Week 9 project!
@@ -183,8 +183,23 @@ function doPost(e) {
 }
 ```
 
-### 3B. [Week 9 Template] Personal English Weakness Tracker — "AI for My Own English" (`gas_code.js` Auto-Creates `My_Weak_Items` & `My_Practice_Log`)
-Automatically creates a Google Sheet with Tab 1 `My_Weak_Items` (pre-seeded with the student's 5 authentic personal weak sentences/errors and hint rules) and Tab 2 `My_Practice_Log` (recording Round 1 Baseline, Round 2, and Round 3 Post-Practice scores and before/after outputs so the webpage can render a live **"📈 Round 1 Baseline vs. Latest Round Progress Card"** at the top):
+### 3B. [Week 9 Template] Design Your Own English App (`gas_code.js` Auto-Creates `Items` & `Practice_Log`)
+In Week 9 students choose their own learner, English skill and app type (1 of 6). The Cockpit design card prompt contains `Learner & Problem`, `App Idea` (app type, Feedback Rule, Record & Progress), `Auto-Create Google Sheets`, `My 5 Practice Items` (starting with a `Format:` line) and `Deployment`.
+
+> ⚠️ **The student's prompt wins**: tab names, columns, app flow, feedback rule and progress display always follow the student's prompt. This template only shows how to build the tabs. Do **not** reuse the old Week 9 `My_Weak_Items` / `My_Practice_Log` or Round 1–3 design.
+
+**Choose the `Items` columns from the `Format:` line** (split each item line on `->` or `|`; for Choose the best reply, the reply marked with `*` is correct):
+
+| App type | Item format (the "Format:" line) | Suggested `Items` columns |
+| :--- | :--- | :--- |
+| Fix the error | `wrong sentence -> correct sentence` | `Item_No, Wrong_Sentence, Correct_Sentence` |
+| Rewrite it better | `weak sentence -> target words (joined with +)` | `Item_No, Weak_Sentence, Target_Words` |
+| Fill the gap | `sentence with ___ \| answer` | `Item_No, Gap_Sentence, Answer` (the agent adds 3 distractors of the same word type) |
+| Match the pairs | `left item \| right item` | `Item_No, Left, Right` |
+| Choose the best reply | `situation \| *best reply \| other reply \| other reply` | `Item_No, Situation, Best_Reply, Other_1, Other_2` |
+| Say it aloud | `target sentence` | `Item_No, Target_Sentence` |
+
+**`Practice_Log`**: append one row per finished 5-item session with `Timestamp, Nickname, Score, Hints_Used, Learner_Answers`, plus any columns the student's Record & Progress rule needs (e.g. seconds, wrong matches). The page reads past rows for the same nickname and shows "first session vs. latest session" at the top.
 
 ```javascript
 function getOrCreateSpreadsheet() {
@@ -198,33 +213,34 @@ function getOrCreateSpreadsheet() {
       if (ss) return ss;
     } catch (e) {}
   }
-  ss = SpreadsheetApp.create("Week9_My_Own_English_Tracker_DB");
+  ss = SpreadsheetApp.create("Week9_Own_English_App_DB");
   props.setProperty("SPREADSHEET_ID", ss.getId());
   return ss;
 }
 
 function setupSheet() {
   const ss = getOrCreateSpreadsheet();
-  let itemSheet = ss.getSheetByName("My_Weak_Items") || ss.getSheets()[0];
-  itemSheet.setName("My_Weak_Items");
+  let itemSheet = ss.getSheetByName("Items") || ss.getSheets()[0];
+  itemSheet.setName("Items");
   if (itemSheet.getLastRow() === 0) {
-    itemSheet.appendRow(["Item_No", "My_Original_Weak_Sentence", "Flagged_Word", "Hint_Frame", "Target_Words", "Sample_Upgrade"]);
-    // Pre-fill the 5 personal weak items from the student's Cockpit Design Card prompt:
+    // Replace the headers and the 5 seed items with the student's Format line and items (Fix the error shown here):
+    itemSheet.appendRow(["Item_No", "Prompt", "Answer"]);
     const seedItems = [
-      [1, "Besides, AI makes students lazy.", "Besides / makes", "Use an academic additive transition + a hedging verb (tend to / may lead to).", "Furthermore, tend to", "Furthermore, over-reliance on AI may tend to reduce students' active engagement."]
+      [1, "He don't like group projects.", "He doesn't like group projects."]
     ];
     seedItems.forEach(r => itemSheet.appendRow(r));
   }
 
-  let logSheet = ss.getSheetByName("My_Practice_Log");
+  let logSheet = ss.getSheetByName("Practice_Log");
   if (!logSheet) {
-    logSheet = ss.insertSheet("My_Practice_Log");
-    logSheet.appendRow(["Timestamp", "Round_Label", "Score_or_Target_Count", "Hints_Used", "Baseline_vs_Revised_Samples"]);
+    logSheet = ss.insertSheet("Practice_Log");
+    logSheet.appendRow(["Timestamp", "Nickname", "Score", "Hints_Used", "Learner_Answers"]);
   }
   Logger.log("Google Sheet Ready: " + ss.getUrl());
   return ss;
 }
 ```
+*(`doGet` and `doPost` are the same as 3A: `doGet` returns `items` and `logs` (filterable by nickname); `doPost` appends one row to `Practice_Log`.)*
 
 ### 4. `web/app.js` (CORS-Safe Frontend Connection)
 - Keep a placeholder `const GAS_API_URL = "YOUR_GAS_API_URL_HERE";` (and include the 5 items as a built-in local fallback array so the UI loads instantaneously).

@@ -1,6 +1,6 @@
 ---
 name: clasp-netlify-sheets
-description: AntiGravity 專用：Clasp 雲端部署 + Google Sheets 雙分頁自動建表資料庫 + Netlify MCP 零複製雙向閉環網頁系統指南（含第 8 週「B1/B2 單字兩段式提示練習網」與第 9 週「個人英文弱點前後測練習器 My Own English」標準範本、學生 3 次點擊教學引導與避坑 SOP）。當使用者提到「安裝 Netlify」「連接 Netlify」「設定 Netlify」「連接 Google Sheets」「把試算表當資料庫」「接 Apps Script」「clasp 登入」「做網頁表單存進試算表」「網頁前端 + Google Sheets + Netlify」「Clasp 部署」時自動啟用。
+description: AntiGravity 專用：Clasp 雲端部署 + Google Sheets 雙分頁自動建表資料庫 + Netlify MCP 零複製雙向閉環網頁系統指南（含第 8 週「B1/B2 單字兩段式提示練習網」與第 9 週「學生自訂英文學習 App（Design Your Own English App）」通用建表範本、學生 3 次點擊教學引導與避坑 SOP）。當使用者提到「安裝 Netlify」「連接 Netlify」「設定 Netlify」「連接 Google Sheets」「把試算表當資料庫」「接 Apps Script」「clasp 登入」「做網頁表單存進試算表」「網頁前端 + Google Sheets + Netlify」「Clasp 部署」時自動啟用。
 ---
 
 # AntiGravity × Clasp 雲端部署 + Google Sheets 自動建表 + Netlify MCP 零複製雙向閉環系統
@@ -88,7 +88,7 @@ description: AntiGravity 專用：Clasp 雲端部署 + Google Sheets 雙分頁�
 
 ---
 
-## 📁 階段二：本地專案結構與雙分頁自動建表範本（Week 8 單字 ／ Week 9 個人弱點）
+## 📁 階段二：本地專案結構與雙分頁自動建表範本（Week 8 單字 ／ Week 9 學生自訂 App）
 
 在專案工作區建立乾淨的前後端分離結構：
 
@@ -198,8 +198,23 @@ function doPost(e) {
 }
 ```
 
-### 3B. 【第 9 週範本】個人英文弱點練習器 My Own English（`gas_code.js` 自動建雙分頁＋前後測歷程紀錄）
-自動建立 Google Sheets 並生出兩個分頁：`My_Weak_Items`（預塞學生自己過去常錯的 5 個真實句子/口語弱句、提示規則與目標改法）與 `My_Practice_Log`（記錄每一輪 Round 1 起點、Round 2、Round 3 的得分/目標詞命中數與改寫前後句子，供網頁最上方即時繪製「📈 Round 1 Baseline vs. Latest Round 進步對比卡」）：
+### 3B. 【第 9 週範本】學生自訂英文學習 App（Design Your Own English App，`gas_code.js` 自動建 `Items`＋`Practice_Log`）
+第 9 週學生自己決定學習者、英文技能與 App 類型（6 選 1），Cockpit 設計卡產生的 Prompt 會包含：`Learner & Problem`、`App Idea`（含 App 類型、Feedback Rule、Record & Progress）、`Auto-Create Google Sheets`、`My 5 Practice Items`（第一行是 `Format:`）與 `Deployment`。
+
+> ⚠️ **學生 Prompt 優先**：分頁名稱、欄位、App 流程、回饋規則與進度顯示，一律以學生 Prompt 為準；本範本只示範建表寫法。**不要**套用舊版第 9 週的 `My_Weak_Items` / `My_Practice_Log` 或 Round 1–3 設計。
+
+**依 `Format:` 行決定 `Items` 欄位**（把每行依 `->` 或 `|` 拆欄；Choose the best reply 以 `*` 標示的為正解）：
+
+| App 類型 | 題目格式（Format 行） | `Items` 建議欄位 |
+| :--- | :--- | :--- |
+| Fix the error | `wrong sentence -> correct sentence` | `Item_No, Wrong_Sentence, Correct_Sentence` |
+| Rewrite it better | `weak sentence -> target words (joined with +)` | `Item_No, Weak_Sentence, Target_Words` |
+| Fill the gap | `sentence with ___ \| answer` | `Item_No, Gap_Sentence, Answer`（另由 Agent 產生 3 個同詞性干擾選項） |
+| Match the pairs | `left item \| right item` | `Item_No, Left, Right` |
+| Choose the best reply | `situation \| *best reply \| other reply \| other reply` | `Item_No, Situation, Best_Reply, Other_1, Other_2` |
+| Say it aloud | `target sentence` | `Item_No, Target_Sentence` |
+
+**`Practice_Log`**：每完成一次 5 題練習（session）寫一列，基本欄位 `Timestamp, Nickname, Score, Hints_Used, Learner_Answers`，學生 Record & Progress 需要的欄位（如秒數、錯誤配對數）往後加。網頁頂部讀取同一 Nickname 的紀錄，顯示「第一次 vs. 最新一次」進度。
 
 ```javascript
 function getOrCreateSpreadsheet() {
@@ -213,34 +228,34 @@ function getOrCreateSpreadsheet() {
       if (ss) return ss;
     } catch (e) {}
   }
-  ss = SpreadsheetApp.create("Week9_My_Own_English_Tracker_DB");
+  ss = SpreadsheetApp.create("Week9_Own_English_App_DB");
   props.setProperty("SPREADSHEET_ID", ss.getId());
   return ss;
 }
 
 function setupSheet() {
   const ss = getOrCreateSpreadsheet();
-  let itemSheet = ss.getSheetByName("My_Weak_Items") || ss.getSheets()[0];
-  itemSheet.setName("My_Weak_Items");
+  let itemSheet = ss.getSheetByName("Items") || ss.getSheets()[0];
+  itemSheet.setName("Items");
   if (itemSheet.getLastRow() === 0) {
-    itemSheet.appendRow(["Item_No", "My_Original_Weak_Sentence", "Flagged_Word", "Hint_Frame", "Target_Words", "Sample_Upgrade"]);
-    // Agent 自動將學生在 Cockpit 填寫的 5 筆個人真實弱句寫入下方陣列：
+    // 依學生 Prompt 的 Format 行替換欄位標題與 5 筆題目（以下以 Fix the error 為例）：
+    itemSheet.appendRow(["Item_No", "Prompt", "Answer"]);
     const seedItems = [
-      [1, "Besides, AI makes students lazy.", "Besides / makes", "Use an academic additive transition + a hedging verb (tend to / may lead to).", "Furthermore, tend to", "Furthermore, over-reliance on AI may tend to reduce students' active engagement."]
+      [1, "He don't like group projects.", "He doesn't like group projects."]
     ];
     seedItems.forEach(r => itemSheet.appendRow(r));
   }
 
-  let logSheet = ss.getSheetByName("My_Practice_Log");
+  let logSheet = ss.getSheetByName("Practice_Log");
   if (!logSheet) {
-    logSheet = ss.insertSheet("My_Practice_Log");
-    logSheet.appendRow(["Timestamp", "Round_Label", "Score_or_Target_Count", "Hints_Used", "Baseline_vs_Revised_Samples"]);
+    logSheet = ss.insertSheet("Practice_Log");
+    logSheet.appendRow(["Timestamp", "Nickname", "Score", "Hints_Used", "Learner_Answers"]);
   }
   Logger.log("Google Sheet Ready: " + ss.getUrl());
   return ss;
 }
 ```
-*(其餘 `doGet` 與 `doPost` 與 3A 相同，回傳 `items` 與 `logs` 供前端頂部繪製「Round 1 起點 vs. Latest Round 最新一輪」進步對比橫幅！)*
+*(其餘 `doGet` 與 `doPost` 與 3A 相同：`doGet` 回傳 `items` 與 `logs`（可依 nickname 篩選），`doPost` 追加一列到 `Practice_Log`。)*
 
 ### 4. `web/app.js`（前端連線注意 CORS 避坑）
 - 預留 `const GAS_API_URL = "YOUR_GAS_API_URL_HERE";`（同時在前端保留一份內建的 5 題 fallback 陣列，確保讀取期間畫面秒開不空白）。

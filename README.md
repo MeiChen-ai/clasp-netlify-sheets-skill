@@ -48,7 +48,7 @@
 
 ### 四、 Step 3：第 8 週與第 9 週專用「一桿進洞」Prompt 範本（直接貼給 AntiGravity）
 
-在課堂上，你可以直接在課程 **Teaching Cockpit 的 Design Card（設計卡）** 填好 5 格後按 **【📋 Copy Prompt for Antigravity】**，或是直接複製以下第 8 週／第 9 週範本修改 `【...】` 後貼給 AntiGravity：
+在課堂上，你可以直接在課程 **Teaching Cockpit 的 Design Card（設計卡）** 填好 5 格後按 **【📋 Copy Prompt for Antigravity and Padlet】**，或是直接複製以下第 8 週／第 9 週範本修改 `【...】` 後貼給 AntiGravity：
 
 #### 📘 第 8 週範本：做「B1 / B2 單字兩段式提示練習網＋Google Sheets 自動建表」
 ```text
@@ -74,25 +74,39 @@
 4. 請依 clasp-netlify-sheets 流程建立 .claspignore、引導我點 3 次授權、注入真實 /exec 網址並部署到 Netlify！
 ```
 
-#### 🎯 第 9 週範本：做「個人英文弱點練習器 (My Own English)＋前後測進步對比卡」
+#### 🎯 第 9 週範本：設計你自己的英文學習 App（Design Your Own English App）
+第 9 週由你自己決定**學習者、英文技能與 App 類型**。6 種 App 類型與題目格式：
+
+| App 類型 | 題目格式（Format 行） | `Items` 建議欄位 |
+| :--- | :--- | :--- |
+| Fix the error | `wrong sentence -> correct sentence` | `Item_No, Wrong_Sentence, Correct_Sentence` |
+| Rewrite it better | `weak sentence -> target words (joined with +)` | `Item_No, Weak_Sentence, Target_Words` |
+| Fill the gap | `sentence with ___ \| answer` | `Item_No, Gap_Sentence, Answer`（另由 Agent 產生 3 個同詞性干擾選項） |
+| Match the pairs | `left item \| right item` | `Item_No, Left, Right` |
+| Choose the best reply | `situation \| *best reply \| other reply \| other reply` | `Item_No, Situation, Best_Reply, Other_1, Other_2` |
+| Say it aloud | `target sentence` | `Item_No, Target_Sentence` |
+
 ```text
-/clasp-netlify-sheets 請幫我建立並部署一個我個人的「AI for My Own English 英文弱點前後測練習網頁」，連接 Google Sheets 與 Netlify！
+/clasp-netlify-sheets 請幫我建立並部署我的英文微學習網頁 App，連接 Google Sheets 與 Netlify。我第 8 週已設定好 clasp 與 Netlify，請沿用，並在這個資料夾建立新的 Apps Script 專案與新的 Google Sheet。
 
-1. 我要解決的個人英文弱點與練習方式：
-- 我的具體弱點：【例如：寫英文報告常過度使用 besides, so, a lot of 等口語轉折詞，缺乏學術緩和語氣 (hedging verbs)】
-- 練習模式：【二選一：Type A 常犯文法/易混淆字改錯快篩 ／ Type B 把我的口語弱句改寫成學術句】
-- 提示規則（Hint Rule）：【例如：把句子裡太口語的字標紅，點 Hint 按鈕時提示我要用上的 2 個目標學術字（如 Furthermore + tend to），但絕對不要直接幫我寫出整句答案！】
-- 網頁頂部「📈 Round 1 (起點) vs. Latest Round (最新一輪) 進步對比卡」：網頁載入時自動從 Google Sheets 的 `My_Practice_Log` 讀取紀錄，在最上方並列顯示我第 1 輪與最新一輪的得分/目標字命中數與改寫前後句子對照！
+1. 學習者與問題（Learner & Problem）：【例如：寫信給教授語氣太隨便的大一學生（B1）】
 
-2. 自動建立 Google Sheets 雙分頁（請在 gas_code.js 的 setupSheet 自動建表，不要叫我手動建試算表）：
-- 分頁 1 `My_Weak_Items`：自動預先填入我下方的 5 個個人真實錯句/弱句。
-- 分頁 2 `My_Practice_Log`：每次我完成一輪練習（Round 1, Round 2, Round 3）按送出時，自動記錄 `[Timestamp, Round_Label, Score_or_Target_Count, Hints_Used, Baseline_vs_Revised_Samples]` 並即時更新網頁頂部的進步對比卡。
+2. App 點子（App Idea）：【一句話：一個幫助……練習……的 App】
+- App 類型：【6 選 1，例如：Choose the best reply——顯示情境與 3 個回覆，學習者選最合適的一個】
+- 開始畫面請學習者輸入暱稱（不用真名）；一次顯示 1 題，每次 5 題，2–8 分鐘可完成。
+- 回饋規則（Feedback Rule）：【例如：選錯時先說明為什麼太隨便，再讓學習者重選；第 2 次錯才顯示最佳回覆】學習者至少嘗試一次前，絕不顯示答案。
+- 紀錄與進度（Record & Progress）：【例如：記錄第一次就答對的題數；頁面頂部顯示同一暱稱「第一次 vs. 最新一次」的成績】
 
-3. 我自己的 5 個真實錯句／口語弱句：
-- 第 1 句：【例如：Besides, AI makes students lazy. -> 目標必用詞：Furthermore, tend to】
-- 第 2～5 句：【填入另外 4 句自己過去作業真實寫錯或太口語的句子】
+3. 自動建立 Google Sheets 雙分頁（請在 gas_code.js 的 setupSheet 自動建表，不要叫我手動建試算表）：
+- 分頁 1 `Items`：預先填入下方 5 題。
+- 分頁 2 `Practice_Log`：每完成一次練習，記錄 `[Timestamp, Nickname, Score, Hints_Used, Learner_Answers]`，以及我的紀錄規則需要的欄位。
 
-4. 請依 clasp-netlify-sheets 流程建立 .claspignore、引導我在 GAS 點一次 Run 授權新試算表、注入真實 /exec 網址並部署到 Netlify！
+4. 我的 5 題（My 5 Practice Items）：
+Format: 【依 App 類型填格式，例如：situation | *best reply | other reply | other reply】
+- 第 1 題：【例如：Asking for an extension | *Would it be possible to submit the report on Friday? | Can I give it to you later? | I need more time, OK?】
+- 第 2～5 題：【依同樣格式再寫 4 題】
+
+5. 請依 clasp-netlify-sheets 流程建立 .claspignore、引導我在 GAS 點一次 setupSheet 的 Run 授權、注入真實 /exec 網址並部署到 Netlify！
 ```
 
 ---
@@ -157,7 +171,7 @@ Please download the skill file from https://raw.githubusercontent.com/MeiChen-ai
 
 ### 4. Step 3: Week 8 & Week 9 Ready-to-Use Prompts (Paste Directly into AntiGravity)
 
-Fill out your 5-field **Design Card** in the course Teaching Cockpit and click **【📋 Copy Prompt for Antigravity】**, or copy and customize one of the templates below:
+Fill out your 5-field **Design Card** in the course Teaching Cockpit and click **【📋 Copy Prompt for Antigravity and Padlet】**, or copy and customize one of the templates below:
 
 #### 📘 Week 8 Template: CEFR B1 / B2 Vocabulary Two-Step Hint Web App + Auto-Created Google Sheet
 ```text
@@ -183,25 +197,39 @@ Fill out your 5-field **Design Card** in the course Teaching Cockpit and click *
 4. Please follow the clasp-netlify-sheets-en SOP: create .claspignore, guide me through the authorization clicks, inject the real /exec URL, and deploy to Netlify!
 ```
 
-#### 🎯 Week 9 Template: "AI for My Own English" Personal Weakness Tracker + Baseline vs. Latest Progress Card
+#### 🎯 Week 9 Template: Design Your Own English App
+In Week 9 you choose **your own learner, English skill and app type**. The 6 app types and their item formats:
+
+| App type | Item format (the "Format:" line) | Suggested `Items` columns |
+| :--- | :--- | :--- |
+| Fix the error | `wrong sentence -> correct sentence` | `Item_No, Wrong_Sentence, Correct_Sentence` |
+| Rewrite it better | `weak sentence -> target words (joined with +)` | `Item_No, Weak_Sentence, Target_Words` |
+| Fill the gap | `sentence with ___ \| answer` | `Item_No, Gap_Sentence, Answer` (the agent adds 3 distractors of the same word type) |
+| Match the pairs | `left item \| right item` | `Item_No, Left, Right` |
+| Choose the best reply | `situation \| *best reply \| other reply \| other reply` | `Item_No, Situation, Best_Reply, Other_1, Other_2` |
+| Say it aloud | `target sentence` | `Item_No, Target_Sentence` |
+
 ```text
-/clasp-netlify-sheets-en Please build and deploy my personal "AI for My Own English — Personal Weakness Tracker Web App" connected to Google Sheets and Netlify!
+/clasp-netlify-sheets-en Please build and deploy my English microlearning web app connected to Google Sheets and Netlify. I already set up clasp and Netlify in Week 8, so reuse that setup and create a NEW Apps Script project and a NEW Google Sheet in this folder.
 
-1. My Specific English Weakness & Practice Flow:
-- My Target Weakness: [e.g., Overusing informal connectors ('besides', 'so', 'a lot of') instead of academic transitions and hedging verbs]
-- Practice Mode: [Choose: Type A Error-Correction Quick Drill OR Type B Rewrite My Informal Sentences into Academic Prose]
-- My Hint Rule: [e.g., Highlight my informal word in red and show 2 target academic words to include when I click Hint, without rewriting the whole sentence for me!]
-- Top Progress Banner ("📈 Round 1 Baseline vs. Latest Round"): On load, read past rounds from Google Sheets Tab 2 (`My_Practice_Log`) via doGet and display a side-by-side comparison of Round 1 vs. Latest Round (target words used, hints needed, and before/after sentences).
+1. Learner & Problem: [e.g., First-year university students (B1) who write emails to professors that sound too casual.]
 
-2. Auto-Create Two-Tab Google Sheet (Create automatically via setupSheet in gas_code.js—do NOT ask me to create the spreadsheet manually):
-- Tab 1 `My_Weak_Items`: Pre-fill my 5 personal weak sentences/items below.
-- Tab 2 `My_Practice_Log`: Every time I finish a practice round (Round 1, Round 2, Round 3), append `[Timestamp, Round_Label, Score_or_Target_Count, Hints_Used, Baseline_vs_Revised_Samples]` and refresh the top progress banner.
+2. App Idea: [One sentence: an app that helps ... practise ...]
+- App type: [1 of 6, e.g., Choose the best reply. Show a situation and 3 possible replies. The learner picks the most suitable one.]
+- Ask for a nickname on the start screen (no real names). Show 1 item at a time, 5 items per session. One session should take 2-8 minutes.
+- Feedback Rule: [e.g., Wrong choice: explain why that reply sounds too casual, then let the learner choose again. Show the best reply only after the 2nd wrong try.] Never show the answer before the learner has tried at least once.
+- Record & Progress: [e.g., Save first-try score. Show first vs. latest session for this nickname at the top of the page.]
 
-3. My 5 Real Weak Sentences / Items:
-- Item 1: [e.g., Besides, AI makes students lazy. -> Target words to use: 'Furthermore' + 'tend to']
-- Items 2–5: [Enter 4 more real weak sentences from your past essays or speaking notes]
+3. Auto-Create Google Sheets (Do NOT ask me to create the sheet manually):
+- Tab 1 `Items`: Pre-fill my 5 items below.
+- Tab 2 `Practice_Log`: When a session ends, append `[Timestamp, Nickname, Score, Hints_Used, Learner_Answers]` plus anything my Record & Progress rule needs.
 
-4. Please follow the clasp-netlify-sheets-en SOP: create .claspignore, pause for my GAS Run -> Advanced -> Allow click, inject the real /exec URL, and deploy to Netlify!
+4. My 5 Practice Items:
+Format: [the format for your app type, e.g., situation | *best reply | other reply | other reply]
+- Item 1: [e.g., Asking for an extension | *Would it be possible to submit the report on Friday? | Can I give it to you later? | I need more time, OK?]
+- Items 2-5: [4 more items in the same format]
+
+5. Deployment: Follow the clasp-netlify-sheets-en skill SOP (create .claspignore, guide me through the setupSheet Run -> Advanced -> Allow click, inject the real /exec URL, and deploy to Netlify).
 ```
 
 ---
