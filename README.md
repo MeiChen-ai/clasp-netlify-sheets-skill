@@ -19,7 +19,7 @@
 
 AntiGravity 只會在**你目前打開的專案資料夾**裡建立網頁、Apps Script 與設定檔，所以每做一個新 App，都請先：
 
-1. 建立一個**新的空資料夾**，用**英文名稱、不要有空格**（整個路徑最好也不要有中文）。例如第 8 週放在「文件」裡的 `my-vocab-app`；第 9 週**不要沿用第 8 週的資料夾**，另建 `my-english-tracker`。
+1. 建立一個**新的空資料夾**，用**英文名稱、不要有空格**（整個路徑最好也不要有中文）。例如第 8 週放在「文件」裡的 `my-vocab-app`；第 9 週**不要沿用第 8 週的資料夾**，另建 `my-english-app`。
 2. 在 AntiGravity 選 **New Project**，選這個資料夾。
 3. 開一個**新的對話（New Conversation）**，再進行下面的安裝、準備與貼範本。
 
@@ -155,7 +155,7 @@ With the **`/clasp-netlify-sheets-en`** skill in **AntiGravity**, you can build 
 
 AntiGravity creates your web page, Apps Script files and settings **only in the project folder you have open**. So for every new app:
 
-1. Create a **new, empty folder** with an **English name and no spaces** (avoid Chinese characters anywhere in the path), e.g. `my-vocab-app` in Documents for Week 8. In Week 9, **do not reuse your Week 8 folder**: make another one, e.g. `my-english-tracker`.
+1. Create a **new, empty folder** with an **English name and no spaces** (avoid Chinese characters anywhere in the path), e.g. `my-vocab-app` in Documents for Week 8. In Week 9, **do not reuse your Week 8 folder**: make another one, e.g. `my-english-app`.
 2. In AntiGravity, choose **New Project** and pick this folder.
 3. Start a **new conversation**, then install, prepare and paste your prompt as described below.
 
