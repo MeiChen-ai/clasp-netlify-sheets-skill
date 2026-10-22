@@ -15,7 +15,19 @@
 
 ---
 
-### 二、 Step 1：把技能安裝進你的 AntiGravity（只需做一次）
+### 二、 Step 0：先建一個新的專案資料夾（每個 App 一個）
+
+AntiGravity 只會在**你目前打開的專案資料夾**裡建立網頁、Apps Script 與設定檔，所以每做一個新 App，都請先：
+
+1. 建立一個**新的空資料夾**，用**英文名稱、不要有空格**（整個路徑最好也不要有中文）。例如第 8 週放在「文件」裡的 `my-vocab-app`；第 9 週**不要沿用第 8 週的資料夾**，另建 `my-english-tracker`。
+2. 在 AntiGravity 選 **New Project**，選這個資料夾。
+3. 開一個**新的對話（New Conversation）**，再進行下面的安裝、準備與貼範本。
+
+做完後，網頁檔案與 `.clasp.json` 等設定都會在這個資料夾裡；之後要修改這個 App，也是打開同一個資料夾。
+
+---
+
+### 三、 Step 1：把技能安裝進你的 AntiGravity（只需做一次）
 
 請打開 **AntiGravity**，直接複製以下**整段話**貼進對話框送出（AI 會自動幫你建立資料夾並下載技能，完全不用自己找路徑）：
 
@@ -28,7 +40,7 @@
 
 ---
 
-### 三、 Step 2：課前 3 分鐘準備（第 8 週做一次即可，第 9 週免重做！）
+### 四、 Step 2：課前 3 分鐘準備（第 8 週做一次即可，第 9 週免重做！）
 
 1. **準備一個「個人 `@gmail.com`」帳號**：
    * ⚠️ **千萬不要用學校（`.edu.tw`）帳號登入 Google**，學校帳號有管理員限制（`admin_policy_enforced`）會無法建立專案。
@@ -46,7 +58,7 @@
 
 ---
 
-### 四、 Step 3：第 8 週與第 9 週專用「一桿進洞」Prompt 範本（直接貼給 AntiGravity）
+### 五、 Step 3：第 8 週與第 9 週專用「一桿進洞」Prompt 範本（直接貼給 AntiGravity）
 
 在課堂上，你可以直接在課程 **Teaching Cockpit 的 Design Card（設計卡）** 填好 5 格後按 **【📋 Copy Prompt for Antigravity and Padlet】**，或是直接複製以下第 8 週／第 9 週範本修改 `【...】` 後貼給 AntiGravity：
 
@@ -112,7 +124,7 @@ Format: 【依 App 類型填格式，例如：situation | *best reply | other re
 
 ---
 
-### 五、 Step 4：執行過程中，AI 停下來請你點的瀏覽器授權動作
+### 六、 Step 4：執行過程中，AI 停下來請你點的瀏覽器授權動作
 
 1. **【關鍵點擊 2】Clasp 登入 Google 帳號（⚠️ 必勾「全選」，第 8 週做過則第 9 週免做！）**：
    * 點開 AI 給你的 Google 授權網址 ➔ 選你的**個人 `@gmail.com` 帳號**。
@@ -139,7 +151,19 @@ With the **`/clasp-netlify-sheets-en`** skill in **AntiGravity**, you can build 
 
 ---
 
-### 2. Step 1: Install the Skill into AntiGravity (One-Time Setup)
+### 2. Step 0: Make a New Project Folder (One per App)
+
+AntiGravity creates your web page, Apps Script files and settings **only in the project folder you have open**. So for every new app:
+
+1. Create a **new, empty folder** with an **English name and no spaces** (avoid Chinese characters anywhere in the path), e.g. `my-vocab-app` in Documents for Week 8. In Week 9, **do not reuse your Week 8 folder**: make another one, e.g. `my-english-tracker`.
+2. In AntiGravity, choose **New Project** and pick this folder.
+3. Start a **new conversation**, then install, prepare and paste your prompt as described below.
+
+Your web files and settings such as `.clasp.json` are saved in this folder. To change the app later, open the same folder again.
+
+---
+
+### 3. Step 1: Install the Skill into AntiGravity (One-Time Setup)
 
 Open **AntiGravity**, copy the entire block below, and paste it directly into the chat box (the AI will automatically create the folders and install the English skill for you):
 
@@ -152,7 +176,7 @@ Please download the skill file from https://raw.githubusercontent.com/MeiChen-ai
 
 ---
 
-### 3. Step 2: 3-Minute Pre-Flight Checklist (Do Once in Week 8—Skipped in Week 9!)
+### 4. Step 2: 3-Minute Pre-Flight Checklist (Do Once in Week 8—Skipped in Week 9!)
 
 1. **Prepare a Personal `@gmail.com` Account**:
    * ⚠️ **Do NOT use a school (`.edu`) or company Google Workspace account!** School accounts are blocked by administrator policies (`admin_policy_enforced`).
@@ -170,7 +194,7 @@ Please download the skill file from https://raw.githubusercontent.com/MeiChen-ai
 
 ---
 
-### 4. Step 3: Week 8 & Week 9 Ready-to-Use Prompts (Paste Directly into AntiGravity)
+### 5. Step 3: Week 8 & Week 9 Ready-to-Use Prompts (Paste Directly into AntiGravity)
 
 Fill out your 5-field **Design Card** in the course Teaching Cockpit and click **【📋 Copy Prompt for Antigravity and Padlet】**, or copy and customize one of the templates below:
 
@@ -238,7 +262,7 @@ Format: [the format for your app type, e.g., situation | *best reply | other rep
 
 ---
 
-### 5. Step 4: The Browser Authorization Clicks During Deployment
+### 6. Step 4: The Browser Authorization Clicks During Deployment
 
 1. **[Key Click 2] Clasp Google Login (⚠️ MUST Check "Select all" — Done Once in Week 8, Skipped in Week 9!)**:
    * Click the Google OAuth link provided by the AI ➔ Select your **personal `@gmail.com` account**.
