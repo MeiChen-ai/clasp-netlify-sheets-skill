@@ -31,13 +31,26 @@ AntiGravity 只會在**你目前打開的專案資料夾**裡建立網頁、Apps
 
 ---
 
-### 三、 Step 1：把技能安裝進你的 AntiGravity（只需做一次）
+### 三、 Step 1：如何安裝？（只需做一次，支援 Antigravity / OpenCode / Claude Code / Codex）
 
-請打開 **AntiGravity**，直接複製以下**整段話**貼進對話框送出（AI 會自動幫你建立資料夾並下載技能，完全不用自己找路徑）：
+你**完全不需要自己開終端機找資料夾路徑**！只要打開你正在使用的 AI Agent（**Google Antigravity** 或 **OpenCode**），複製下方對應的一段話貼進對話框，AI 就會自動幫你把技能全部安裝好。
 
-#### 💬 複製貼給 AntiGravity 的安裝指令（中文版）：
+#### 💬 複製貼給 AI Agent 自動安裝
+
+##### 選項 1：通用一鍵安裝指令（同時安裝技能到 Antigravity / OpenCode / Claude Code / Codex）
+直接複製以下**整段話**貼給你的 **Antigravity** 或 **OpenCode**：
+```text
+請幫我把 https://github.com/MeiChen-ai/clasp-netlify-sheets-skill.git 完整 clone 到暫存資料夾，並執行裡面的安裝腳本（或將 skills/ 底下的 clasp-netlify-sheets 與 clasp-netlify-sheets-en 完整資料夾複製到 ~/.gemini/config/skills/、~/.config/opencode/skills/、~/.agents/skills/ 與 ~/.claude/skills/，若資料夾不存在請自動建立）。
+```
+
+##### 選項 2：如果你只用 Google Antigravity
 ```text
 請幫我從 https://raw.githubusercontent.com/MeiChen-ai/clasp-netlify-sheets-skill/main/skills/clasp-netlify-sheets/SKILL.md 下載技能檔，並儲存到我的 ~/.gemini/config/skills/clasp-netlify-sheets/SKILL.md（若資料夾不存在請自動建立）。
+```
+
+##### 選項 3：如果你只用 OpenCode
+```text
+請幫我從 https://raw.githubusercontent.com/MeiChen-ai/clasp-netlify-sheets-skill/main/skills/clasp-netlify-sheets/SKILL.md 下載技能檔，並同時儲存到我的 ~/.config/opencode/skills/clasp-netlify-sheets/SKILL.md 與 ~/.agents/skills/clasp-netlify-sheets/SKILL.md（若資料夾不存在請自動建立）。
 ```
 
 *(💡 裝完後，請開一個新的對話視窗，輸入 `/` 就能看到 `/clasp-netlify-sheets` 技能！)*
@@ -167,13 +180,26 @@ Your web files and settings such as `.clasp.json` are saved in this folder. To c
 
 ---
 
-### 3. Step 1: Install the Skill into AntiGravity (One-Time Setup)
+### 3. Step 1: One-Time Installation (Supports Antigravity, OpenCode, Claude Code & Codex)
 
-Open **AntiGravity**, copy the entire block below, and paste it directly into the chat box (the AI will automatically create the folders and install the English skill for you):
+You do **not** need to manually hunt for hidden skill folders! Simply open your AI Agent (**Google Antigravity** or **OpenCode**), copy one of the blocks below, and paste it directly into the chat box.
 
-#### 💬 Copy & Paste This Install Prompt into AntiGravity (English Edition):
+#### 💬 Copy & Paste One Prompt to Your AI Agent
+
+##### Option 1: Universal Install Prompt (Installs the Skill to Antigravity, OpenCode, Claude Code & Codex)
+Copy and paste this entire block into **Antigravity** or **OpenCode**:
+```text
+Please clone https://github.com/MeiChen-ai/clasp-netlify-sheets-skill.git into a temporary folder and run its installer script (or copy `clasp-netlify-sheets` and `clasp-netlify-sheets-en` from `skills/` into `~/.gemini/config/skills/`, `~/.config/opencode/skills/`, `~/.agents/skills/`, and `~/.claude/skills/`, creating the directories if they do not exist).
+```
+
+##### Option 2: Google Antigravity Only
 ```text
 Please download the skill file from https://raw.githubusercontent.com/MeiChen-ai/clasp-netlify-sheets-skill/main/skills/clasp-netlify-sheets-en/SKILL.md and save it as my global AntiGravity skill at ~/.gemini/config/skills/clasp-netlify-sheets-en/SKILL.md (automatically create the directories if they do not exist).
+```
+
+##### Option 3: OpenCode Only
+```text
+Please download the skill file from https://raw.githubusercontent.com/MeiChen-ai/clasp-netlify-sheets-skill/main/skills/clasp-netlify-sheets-en/SKILL.md and save it to both ~/.config/opencode/skills/clasp-netlify-sheets-en/SKILL.md and ~/.agents/skills/clasp-netlify-sheets-en/SKILL.md (automatically create the directories if they do not exist).
 ```
 
 *(💡 After installation, open a new chat and type `/` to see `/clasp-netlify-sheets-en`!)*

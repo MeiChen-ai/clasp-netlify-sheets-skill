@@ -3,6 +3,7 @@ $RepoRoot = Split-Path -Parent $PSScriptRoot
 
 $Targets = @(
   "$env:USERPROFILE\.gemini\config\skills",
+  "$env:USERPROFILE\.config\opencode\skills",
   "$env:USERPROFILE\.agents\skills",
   "$env:USERPROFILE\.claude\skills"
 )

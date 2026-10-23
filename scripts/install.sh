@@ -2,7 +2,7 @@
 set -e
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
-for TARGET in "$HOME/.gemini/config/skills" "$HOME/.agents/skills" "$HOME/.claude/skills"; do
+for TARGET in "$HOME/.gemini/config/skills" "$HOME/.config/opencode/skills" "$HOME/.agents/skills" "$HOME/.claude/skills"; do
   mkdir -p "$TARGET"
   cp -r "$REPO_ROOT/skills/clasp-netlify-sheets" "$TARGET/"
   cp -r "$REPO_ROOT/skills/clasp-netlify-sheets-en" "$TARGET/"
